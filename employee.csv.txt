@@ -1,0 +1,4 @@
+fistname,lastname,age,domain,salary
+sneha,priya,22,integration,10000
+murali,dharan,2,integration,20000
+keerthika,sekar,10,integration,30000

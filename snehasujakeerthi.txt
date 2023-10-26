@@ -1,0 +1,35 @@
+﻿10/17/23
+
+kafka connect setup analysis: 1.00 pm -6 pm 
+doubt clarification session : 6.00 pm -7.00 pm 
+
+10/18/23
+
+kafka  connect set up source connector : 1.30-6
+30
+
+error1:Kafka Connect : /api/kafka-connect-1
+Kafka Connect UI Version : 0.9.7
+CONNECTIVITY ERROR why this error comes in firefox
+
+solution: forget to up the zookeeper and kafka servers and kafka connect 
+
+error 2:command not found nu varudhu due to path environment variable 
+error 3: ssl certificate issue due to https 
+error 4: 404 error found in postman (5.24) due to  quickstart issue 
+
+at (6.30) i completed (by using datagen source connector i posted data into my kafka topics )
+
+20/10/23
+
+at 7.00pm completed the task
+issues faced:connectivity error due to storage class 
+deserialization error 
+for avro format error we changed into json so we use format.class
+"confluent.topic.schemas.enable": "false" need to include that 
+
+
+26/10/23
+
+error 1:connector class error found in confluent hub class name
+ 
