@@ -1,0 +1,37 @@
+const fs = require('fs');
+const path = require('path');
+const { Kafka } = require('kafkajs');
+
+const kafka = new Kafka({
+  clientId: 'kafka-poc-consumer',
+  brokers: ['192.168.183.128:9092', '192.168.183.128:9093', '192.168.183.128:9094'],
+});
+
+const consumer = kafka.consumer({ groupId: 'My Group' });
+const targetFolder = 'E:/target folder';
+
+async function consumeAndSaveFile() {
+  try {
+    await consumer.connect();
+    await consumer.subscribe({ topic: 'water', fromBeginning: true });
+
+    await consumer.run({
+      eachMessage: async ({ message }) => {
+        const fileName = message.key.toString();
+        const fileData = message.value.toString();
+        const targetFilePath = path.join(targetFolder, fileName);
+
+        try {
+          fs.writeFileSync(targetFilePath, fileData);
+          console.log(`File data saved to target folder for ${fileName}.`);
+        } catch (writeError) {
+          console.error(`Error saving file ${fileName}: ${writeError.message}`);
+        }
+      },
+    });
+  } catch (error) {
+    console.error(`Consumer error: ${error.message}`);
+  }
+}
+
+consumeAndSaveFile();
